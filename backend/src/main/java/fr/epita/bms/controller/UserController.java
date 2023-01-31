@@ -29,17 +29,16 @@ public class UserController {
         return userRepository.save(user);
     }
 
-//    @PutMapping("/users/{id}")
-//    public User updateUser(@PathVariable("id") Long id, @RequestBody User user){
-//        User updatedUser = userRepository.findById(id);
-//        user.setFirstName(updatedUser.getFirstName());
-//        user.setEmailAddress(updatedUser.getEmailAddress());
-//        // update other fields as needed
-//        return userRepository.save(user);
-//    }
+    @PutMapping("/users/{id}")
+    public User updateUser(@PathVariable("id") long id, @RequestBody User user){
+        User updatedUser = userRepository.findById(id).get(0);
+        updatedUser.setFirstName(user.getFirstName());
+        updatedUser.setEmailAddress(user.getEmailAddress());
+        return userRepository.save(updatedUser);
+    }
 
     @GetMapping(path="/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<User>> get(@PathVariable("id") String id){
+    public ResponseEntity<List<User>> searchUser(@PathVariable("id") String id){
 
         try {
             List<User> questionDTO = userRepository.findById(Integer.parseInt(id));
