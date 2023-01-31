@@ -34,6 +34,10 @@ public class UserController {
         User updatedUser = userRepository.findById(id).get(0);
         updatedUser.setFirstName(user.getFirstName());
         updatedUser.setEmailAddress(user.getEmailAddress());
+        updatedUser.setLastName(user.getLastName());
+        updatedUser.setBuildingNumber(user.getBuildingNumber());
+        updatedUser.setHouseNumber(user.getHouseNumber());
+        updatedUser.setPhoneNumber(user.getPhoneNumber());
         return userRepository.save(updatedUser);
     }
 

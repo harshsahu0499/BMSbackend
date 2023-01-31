@@ -3,9 +3,8 @@ package fr.epita.bms.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
-
+@Table(name = "admins")
+public class Admin {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +14,10 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "building_number")
     private String buildingNumber;
-    @Column(name = "house_number")
-    private String houseNumber;
+
     @Column(name = "email_address")
     private String emailAddress;
 
@@ -27,6 +26,7 @@ public class User {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
 
     public String getFirstName() {
         return firstName;
@@ -52,20 +52,20 @@ public class User {
         this.buildingNumber = buildingNumber;
     }
 
-    public String getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
-    }
-
     public String getEmailAddress() {
         return emailAddress;
     }
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhoneNumber() {
@@ -75,18 +75,15 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public Admin(){}
 
-    public User(){
-
-    }
-    public User(long id, String firstName, String lastName, String buildingNumber, String houseNumber, String emailAddress, String phoneNumber, String password) {
+    public Admin(Long id, String firstName, String lastName, String buildingNumber, String emailAddress, String password, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.buildingNumber = buildingNumber;
-        this.houseNumber = houseNumber;
         this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
         this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 }
