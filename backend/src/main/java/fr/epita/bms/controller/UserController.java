@@ -22,7 +22,7 @@ public class UserController {
 
     //POST user via rest api
     @PostMapping("/users")
-    public User createMovie(@RequestBody User user){
+    public User createUser(@RequestBody User user){
         return userRepository.save(user);
     }
 }
