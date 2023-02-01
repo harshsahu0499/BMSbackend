@@ -30,7 +30,7 @@ public class AdminController {
 
     @PutMapping("/admins/{id}")
     public Admin updateAdmin(@PathVariable("id") long id, @RequestBody Admin admin){
-        Admin updateAdmin = adminRepository.findById(id).get(0);
+        Admin updateAdmin = adminRepository.findById(id);
         updateAdmin.setFirstName(admin.getFirstName());
         updateAdmin.setLastName(admin.getLastName());
         updateAdmin.setBuildingNumber(admin.getBuildingNumber());
@@ -41,11 +41,22 @@ public class AdminController {
     }
 
     @GetMapping(path="/admins/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Admin>> searchAdmin(@PathVariable("id") String id){
+    public ResponseEntity<Admin> searchAdmin(@PathVariable("id") String id){
 
         try {
-            List<Admin> questionDTO = adminRepository.findById(Integer.parseInt(id));
-            return ResponseEntity.ok(questionDTO);
+            Admin adminDTO = adminRepository.findById(Integer.parseInt(id));
+            return ResponseEntity.ok(adminDTO);
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping(path="/admins/email/{emailAddress}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Admin> searchAdminByEmail(@PathVariable("emailAddress") String emailAddress){
+
+        try {
+            Admin adminDTO = adminRepository.findByEmailAddress(emailAddress);
+            return ResponseEntity.ok(adminDTO);
         }catch (Exception e){
             return ResponseEntity.internalServerError().build();
         }

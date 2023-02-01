@@ -31,7 +31,7 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public User updateUser(@PathVariable("id") long id, @RequestBody User user){
-        User updatedUser = userRepository.findById(id).get(0);
+        User updatedUser = userRepository.findById(id);
         updatedUser.setFirstName(user.getFirstName());
         updatedUser.setEmailAddress(user.getEmailAddress());
         updatedUser.setLastName(user.getLastName());
@@ -42,11 +42,22 @@ public class UserController {
     }
 
     @GetMapping(path="/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<User>> searchUser(@PathVariable("id") String id){
+    public ResponseEntity<User> searchUser(@PathVariable("id") String id){
 
         try {
-            List<User> questionDTO = userRepository.findById(Integer.parseInt(id));
-            return ResponseEntity.ok(questionDTO);
+            User userDTO = userRepository.findById(Integer.parseInt(id));
+            return ResponseEntity.ok(userDTO);
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping(path="/users/email/{emailAddress}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> searchUserByEmail(@PathVariable("emailAddress") String emailAddress){
+
+        try {
+            User userDTO = userRepository.findByEmailAddress(emailAddress);
+            return ResponseEntity.ok(userDTO);
         }catch (Exception e){
             return ResponseEntity.internalServerError().build();
         }
