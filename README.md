@@ -27,6 +27,16 @@ user_id VARCHAR(255),
 location VARCHAR(255),
 description TEXT,
 priority VARCHAR(255),
-image_path VARCHAR(255),
+image_path VARCHAR(2000),
 date_time TIMESTAMP
 );
+
+{
+"userId": "7",
+"location": "28 Rue de",
+"description": "testissue",
+"priority": "high",
+"imagePath": "capture.PNG",
+"dateTime": 
+
+}

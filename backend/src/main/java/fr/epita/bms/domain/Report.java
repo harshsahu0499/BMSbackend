@@ -25,6 +25,8 @@ public class Report {
     @Column(name = "image_path")
     private String imagePath;
 
+    //private byte[] imageData or BufferedImage here instead of imagePath
+
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
