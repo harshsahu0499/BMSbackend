@@ -37,6 +37,7 @@ date_time TIMESTAMP
 "priority": "high",
 "imagePath": "capture.PNG",
 "dateTime": 2023-02-01 05:01:56.122
+"status": "Open"
 
 }
 

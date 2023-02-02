@@ -30,11 +30,22 @@ public class Report {
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
+    @Column(name = "status")
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Report(){
 
     }
 
-    public Report(Long id, Integer userId, String location, String description, String priority, String imagePath, LocalDateTime dateTime) {
+    public Report(Long id, Integer userId, String location, String description, String priority, String imagePath, LocalDateTime dateTime, String status) {
         this.id = id;
         this.userId = userId;
         this.location = location;
@@ -42,6 +53,7 @@ public class Report {
         this.priority = priority;
         this.imagePath = imagePath;
         this.dateTime = dateTime;
+        this.status = status;
     }
 
     public Long getId() {
