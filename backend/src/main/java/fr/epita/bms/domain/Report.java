@@ -11,7 +11,7 @@ public class Report {
     private Long id;
 
     @Column(name = "user_id")
-    private String userId;
+    private Integer userId;
 
     @Column(name = "location")
     private String location;
@@ -34,7 +34,7 @@ public class Report {
 
     }
 
-    public Report(Long id, String userId, String location, String description, String priority, String imagePath, LocalDateTime dateTime) {
+    public Report(Long id, Integer userId, String location, String description, String priority, String imagePath, LocalDateTime dateTime) {
         this.id = id;
         this.userId = userId;
         this.location = location;
@@ -52,11 +52,11 @@ public class Report {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
